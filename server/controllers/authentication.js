@@ -22,9 +22,7 @@ exports.signup = (req, res, next) => {
 
         user.save(err => {
             if (err) { return next(err); }
-
             res.json({ sucess: true });
         });
     });
-    // Respond to request indicating the user was created
-}
+};
