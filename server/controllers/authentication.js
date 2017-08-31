@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const mongoose = require('mongoose');
+
 
 exports.signup = (req, res, next) => {
     const email = req.body.email;
@@ -17,8 +19,12 @@ exports.signup = (req, res, next) => {
             email: email,
             password: password
         });
-        // Pass a callback to err
-        user.save(err => );
+
+        user.save(err => {
+            if (err) { return next(err); }
+
+            res.json({ sucess: true });
+        });
     });
     // Respond to request indicating the user was created
 }
