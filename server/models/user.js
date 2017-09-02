@@ -29,7 +29,7 @@ userSchema.pre('save', function(next) {
 });
 
 // Create comparePassword method for instances of User Model
-userSchema.methods.comparePassword = function(candidatePassport, callback){
+userSchema.methods.comparePassword = function(candidatePassword, callback){
   bcrypt.compare(candidatePassword, this.password, (err, isMatch)=> {
     if (err) return callback(err);
 
